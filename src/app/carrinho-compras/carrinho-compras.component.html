@@ -1,0 +1,41 @@
+<mz-navbar>
+  <mz-navbar-item-container [align]="'left'">
+    <a routerLink="/ListaProdutosRoute" class="brand-logo">Coffe's Shop</a>
+  </mz-navbar-item-container>
+</mz-navbar>
+
+<div class="row">
+  <div class="col s12 m12">
+    <table class="striped">
+        <thead>
+          <tr>
+              <th class="center-align">Produto</th>
+              <th class="center-align">Preço</th>
+              <th class="center-align">Quant</th>
+              <th class="center-align"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let prod of ListaCarrinhoFinal">
+            <td>{{prod.Nome}}</td>
+            <td class="right-align">{{prod.Preco.toFixed(2)}}</td>
+            <td class="center-align">{{returnQuantidadeItem(prod.Id)}}</td>
+            <td class="center-align"><button class="btn-floating btn-small waves-effect waves-light red" (click)="removeCarrinhoCompras(prod)"><i class="material-icons">remove_shopping_cart</i></button></td>
+          </tr>
+          <tr>
+              <td class="right-align">Total:</td>
+              <td class="right-align">{{returnPrecoTotal().toFixed(2)}}</td>
+              <td class="center-align"></td>
+              <td class="center-align"></td>
+          </tr>
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <div class="center-align">
+      <button class="waves-effect waves-light btn-large red" routerLink="/ListaProdutosRoute" (click)="finalizarCompra()">Finalizar Compra</button>
+    </div>
+    
+  </div>
+</div>
